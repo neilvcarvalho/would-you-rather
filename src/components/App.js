@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Login from './Login'
 import { handleInitialData } from '../actions/shared'
 import { connect } from 'react-redux'
 
@@ -8,12 +9,26 @@ class App extends Component {
   }
 
   render () {
+    const { authedUser } = this.props
+
     return (
       <div className="App">
         <h1>Would You Rather...?</h1>
+
+        {
+          authedUser
+          ? <p>You are logged in as {authedUser}</p>
+          : <Login />
+        }
       </div>
-    );
+    )
   }
 }
 
-export default connect()(App);
+function mapStateToProps ( { authedUser, users }) {
+  return {
+    authedUser
+  }
+}
+
+export default connect(mapStateToProps)(App);
