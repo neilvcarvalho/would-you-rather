@@ -1,11 +1,16 @@
 import React, { Component } from 'react'
 import Login from './Login'
 import { handleInitialData } from '../actions/shared'
+import { setAuthedUser } from '../actions/authedUser'
 import { connect } from 'react-redux'
 
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData())
+  }
+
+  logout () {
+    this.props.dispatch(setAuthedUser(null))
   }
 
   render () {
@@ -17,7 +22,10 @@ class App extends Component {
 
         {
           authedUser
-          ? <p>You are logged in as {authedUser}</p>
+          ? <p>
+              You are logged in as {authedUser}
+              <button onClick={() => this.logout()}>Logout</button>
+            </p>
           : <Login />
         }
       </div>
