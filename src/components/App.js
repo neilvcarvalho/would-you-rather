@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Login from './Login'
+import Leaderboard from './Leaderboard'
+import Navbar from './Navbar'
 import { handleInitialData } from '../actions/shared'
 import { setAuthedUser } from '../actions/authedUser'
 import { connect } from 'react-redux'
@@ -9,26 +12,26 @@ class App extends Component {
     this.props.dispatch(handleInitialData())
   }
 
-  logout () {
-    this.props.dispatch(setAuthedUser(null))
-  }
 
   render () {
     const { authedUser } = this.props
 
     return (
-      <div className="App">
-        <h1>Would You Rather...?</h1>
+      <Router>
+        <div className="App">
+          <Navbar />
 
-        {
-          authedUser
-          ? <p>
-              You are logged in as {authedUser}
-              <button onClick={() => this.logout()}>Logout</button>
-            </p>
-          : <Login />
-        }
-      </div>
+          <Route path='/leaderboard' exact component={Leaderboard} />
+          <Route path='/' exact>
+            {
+              authedUser
+              ? null
+              : <Login />
+            }
+          </Route>
+
+        </div>
+      </Router>
     )
   }
 }
