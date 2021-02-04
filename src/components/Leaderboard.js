@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { formattedUser } from '../utils/helpers'
+import { calculateScore } from '../utils/helpers'
 
 class Leaderboard extends Component {
   render () {
@@ -15,7 +15,14 @@ class Leaderboard extends Component {
           {userIds.map((id) => {
             const user = users[id]
 
-            return <li key={id}>{formattedUser(user)}</li>
+            return <li key={id}>
+              <div>
+                <img src={user.avatarURL} alt={`Avatar of ${user.name}`}/>
+                <p>{user.name}</p>
+                <p>Questions asked: {user.questions.length}</p>
+                <p>Answers given: {Object.keys(user.answers).length}</p>
+              </div>
+            </li>
           })}
         </ul>
       </div>
@@ -24,8 +31,6 @@ class Leaderboard extends Component {
 }
 
 function mapStateToProps ( { users }) {
-  const calculateScore = (user) => (Object.keys(user.answers).length + user.questions.length)
-
   return {
     users: Object.values(users).sort((a,b) => (calculateScore(b) - calculateScore(a)))
   }

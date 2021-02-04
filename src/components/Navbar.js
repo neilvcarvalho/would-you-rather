@@ -17,6 +17,7 @@ class Navbar extends Component {
         {
           this.props.authedUser
           ? <React.Fragment>
+              <Link to='/'>Home</Link>
               <Link to='/leaderboard'>Leaderboard</Link>
 
               <p>

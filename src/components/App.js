@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Login from './Login'
 import Leaderboard from './Leaderboard'
 import Navbar from './Navbar'
+import Home from './Home'
 import { handleInitialData } from '../actions/shared'
-import { setAuthedUser } from '../actions/authedUser'
 import { connect } from 'react-redux'
 
 class App extends Component {
@@ -25,7 +25,7 @@ class App extends Component {
           <Route path='/' exact>
             {
               authedUser
-              ? null
+              ? <Home />
               : <Login />
             }
           </Route>
