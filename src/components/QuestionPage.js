@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import Login from './Login'
+import QuestionResults from './QuestionResults'
 import { connect } from 'react-redux'
 
 class QuestionPage extends Component {
   render () {
-    const { question, authedUser } = this.props
+    const { question, authedUser, hasAnswered, users } = this.props
 
     if (!authedUser) {
       return <Login />
@@ -12,10 +13,13 @@ class QuestionPage extends Component {
 
     return (
       <div>
-        <h2>Would you rather...</h2>
+        <h2>{users[question.author].name} asks:</h2>
 
-        <p>{question.optionOne.text} or </p>
-        <p>{question.optionTwo.text}?</p>
+        {
+          hasAnswered
+          ? <QuestionResults question={question} authedUser={authedUser} />
+          : null
+        }
       </div>
     )
   }
@@ -27,6 +31,7 @@ function mapStateToProps ({ questions, authedUser, users }, props) {
   return {
     id,
     authedUser,
+    users,
     question: authedUser ? questions[id] : null,
     hasAnswered: authedUser && Object.keys(users[authedUser].answers).includes(id)
   }
