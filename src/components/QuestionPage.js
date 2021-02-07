@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Login from './Login'
 import QuestionResults from './QuestionResults'
+import QuestionOptions from './QuestionOptions'
 import { connect } from 'react-redux'
 
 class QuestionPage extends Component {
@@ -18,7 +19,7 @@ class QuestionPage extends Component {
         {
           hasAnswered
           ? <QuestionResults question={question} authedUser={authedUser} />
-          : null
+          : <QuestionOptions question={question} authedUser={authedUser} />
         }
       </div>
     )
