@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import { handleAddQuestion } from '../actions/questions'
 
 class NewQuestion extends Component {
@@ -22,18 +23,20 @@ class NewQuestion extends Component {
     return optionOne !== '' && optionTwo !== '' && optionOne !== optionTwo
   }
 
-  handleSubmit = (event) => {
+  handleSubmit = async (event) => {
     event.preventDefault()
-
-    this.props.dispatch(handleAddQuestion(
-      this.state.optionOne,
-      this.state.optionTwo
-    ))
 
     this.setState(() => ({
       optionOne: '',
       optionTwo: ''
     }))
+
+    await this.props.dispatch(handleAddQuestion(
+      this.state.optionOne,
+      this.state.optionTwo,
+    ))
+
+    this.props.history.push('/')
   }
 
 
@@ -61,4 +64,4 @@ class NewQuestion extends Component {
   }
 }
 
-export default connect()(NewQuestion)
+export default withRouter(connect()(NewQuestion))
