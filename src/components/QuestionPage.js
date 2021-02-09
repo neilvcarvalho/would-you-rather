@@ -8,8 +8,8 @@ class QuestionPage extends Component {
   render () {
     const { question, authedUser, hasAnswered, users } = this.props
 
-    if (!authedUser) {
-      return <Login />
+    if (!question) {
+      return <h2>This question does not exist</h2>
     }
 
     return (
@@ -33,8 +33,8 @@ function mapStateToProps ({ questions, authedUser, users }, props) {
     id,
     authedUser,
     users,
-    question: authedUser ? questions[id] : null,
-    hasAnswered: authedUser && Object.keys(users[authedUser].answers).includes(id)
+    question: questions[id],
+    hasAnswered: Object.keys(users[authedUser].answers).includes(id)
   }
 }
 
