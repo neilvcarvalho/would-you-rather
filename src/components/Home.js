@@ -45,7 +45,7 @@ class Home extends Component {
 
 function mapStateToProps ({ authedUser, users, questions }) {
   const answeredQuestionsIds = Object.keys(users[authedUser].answers)
-  const unansweredQuestionsIds = Object.keys(questions).filter((question) => !answeredQuestionsIds.includes(question.id))
+  const unansweredQuestionsIds = Object.keys(questions).filter((qid) => !answeredQuestionsIds.includes(qid))
 
   return {
     authedUser,
