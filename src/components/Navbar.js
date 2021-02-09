@@ -9,32 +9,32 @@ class Navbar extends Component {
   }
 
   render () {
-    const { authedUser } = this.props
+    const { authedUser, users } = this.props
 
     return (
       <header>
         <h1>Would You Rather...?</h1>
-        {
-          this.props.authedUser
-          ? <React.Fragment>
-              <Link to='/'>Home</Link>
-              <Link to='/leaderboard'>Leaderboard</Link>
 
-              <p>
-                You are logged in as {authedUser}
-                <button onClick={() => this.logout()}>Logout</button>
-              </p>
-            </React.Fragment>
-          : null
-      }
+        <Link to='/'>Home</Link>
+        <Link to='/leaderboard'>Leaderboard</Link>
+        <Link to='/add'>New question</Link>
+
+        {
+          this.props.authedUser &&
+          <p>
+            You are logged in as {users[authedUser].name}
+            <button onClick={() => this.logout()}>Logout</button>
+          </p>
+        }
       </header>
     )
   }
 }
 
-function mapStateToProps ( { authedUser }) {
+function mapStateToProps ( { authedUser, users }) {
   return {
-    authedUser
+    authedUser,
+    users
   }
 }
 

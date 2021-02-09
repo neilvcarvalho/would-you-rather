@@ -5,6 +5,7 @@ import Leaderboard from './Leaderboard'
 import Navbar from './Navbar'
 import Home from './Home'
 import QuestionPage from './QuestionPage'
+import NewQuestion from './NewQuestion'
 import { handleInitialData } from '../actions/shared'
 import { connect } from 'react-redux'
 
@@ -21,16 +22,18 @@ class App extends Component {
       <Router>
         <div className="App">
           <Navbar />
-
-          <Route path='/leaderboard' exact component={Leaderboard} />
-          <Route path='/questions/:id' component={QuestionPage} />
-          <Route path='/' exact>
-            {
-              authedUser
-              ? <Home />
-              : <Login />
-            }
-          </Route>
+          {
+            authedUser
+            ? (
+              <div>
+                <Route path='/leaderboard' exact component={Leaderboard} />
+                <Route path='/questions/:id' component={QuestionPage} />
+                <Route path='/add' exact component={NewQuestion} />
+                <Route path='/' exact component={Home} />
+                </div>
+            )
+            : <Login />
+          }
 
         </div>
       </Router>
