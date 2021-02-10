@@ -1,23 +1,23 @@
 import React, { Component } from 'react'
+import QuestionResultCard from './QuestionResultCard'
 
 class QuestionResults extends Component {
   render () {
     const { question, authedUser } = this.props
+    const { optionOne, optionTwo } = question
     const totalVotes = question.optionOne.votes.length + question.optionTwo.votes.length
 
     return (
       <div>
-        <p>Results:</p>
+        <h3>Results:</h3>
 
-        <div className={question.optionOne.votes.includes(authedUser) ? 'chosenOption' : ''}>
-          Would you rather {question.optionOne.text}?
-          {question.optionOne.votes.length} out of {totalVotes} votes ({question.optionOne.votes.length / totalVotes * 100}%)
-        </div>
+        <QuestionResultCard
+          option={optionOne} totalVotes={totalVotes} chosenOption={optionOne.votes.includes(authedUser)}
+        />
 
-        <div className={question.optionTwo.votes.includes(authedUser) ? 'chosenOption' : ''}>
-          Would you rather {question.optionTwo.text}?
-          {question.optionTwo.votes.length} out of {totalVotes} votes ({question.optionTwo.votes.length / totalVotes * 100}%)
-        </div>
+        <QuestionResultCard
+          option={optionTwo} totalVotes={totalVotes} chosenOption={optionTwo.votes.includes(authedUser)}
+        />
       </div>
     )
   }
