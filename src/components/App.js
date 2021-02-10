@@ -25,12 +25,12 @@ class App extends Component {
           {
             authedUser
             ? (
-              <div>
+              <main class='container' style={{paddingTop: '5em'}}>
                 <Route path='/leaderboard' exact component={Leaderboard} />
                 <Route path='/questions/:id' component={QuestionPage} />
                 <Route path='/add' exact component={NewQuestion} />
                 <Route path='/' exact component={Home} />
-                </div>
+              </main>
             )
             : <Login />
           }
