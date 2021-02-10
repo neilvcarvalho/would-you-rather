@@ -9,22 +9,34 @@ class Leaderboard extends Component {
 
     return (
       <div>
-        <h2>Leaderboard</h2>
+        <h2>Leader Board</h2>
 
-        <ul>
-          {userIds.map((id) => {
-            const user = users[id]
+        <table className='table'>
+          <thead>
+            <th>#</th>
+            <th>User</th>
+            <th>Questions asked</th>
+            <th>Questions answered</th>
+          </thead>
 
-            return <li key={id}>
-              <div>
-                <img src={user.avatarURL} alt={`Avatar of ${user.name}`}/>
-                <p>{user.name}</p>
-                <p>Questions asked: {user.questions.length}</p>
-                <p>Answers given: {Object.keys(user.answers).length}</p>
-              </div>
-            </li>
-          })}
-        </ul>
+          <tbody>
+            {userIds.map((id, index) => {
+              const user = users[id]
+
+              return (
+                <tr key={id}>
+                  <td>{index + 1}</td>
+                  <td>
+                    <img className='avatar small' src={user.avatarURL} alt={`Avatar of ${user.name}`}/>
+                    <p>{user.name}</p>
+                  </td>
+                  <td>{user.questions.length}</td>
+                  <td>{Object.keys(user.answers).length}</td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
       </div>
     )
   }
