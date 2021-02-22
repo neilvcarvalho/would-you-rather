@@ -11,7 +11,7 @@ import { connect } from 'react-redux'
 
 class App extends Component {
   componentDidMount() {
-    this.props.dispatch(handleInitialData())
+    this.props.handleInitialData();
   }
 
 
@@ -46,4 +46,4 @@ function mapStateToProps ( { authedUser, users }) {
   }
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, { handleInitialData })(App);
