@@ -1,12 +1,20 @@
-# Would You Rather Project
+# Would You Rather
 
-This is the starter code for the final assessment project for Udacity's React & Redux course.
+Would You Rather is a game of preferences. For each question, you get two options. Choose the one you would rather.
 
-The `_DATA.js` file represents a fake database and methods that let you access the data. The only thing you need to edit in the ` _DATA.js` file is the value of `avatarURL`. Each user should have an avatar, so you’ll need to add the path to each user’s avatar.
+This is the final assessment project for Udacity's React & Redux course.
 
-Using the provided starter code, you'll build a React/Redux front end for the application. We recommend using the [Create React App](https://github.com/facebook/create-react-app) to bootstrap the project.
+# How to play
+First of all, log in as your user. On the home screen, you will see all the questions - answered and unanswered.
+You will be able to answer the unanswered questions or see the results of the answered questions.
 
-## Data
+To create a new question, choose `New question` on the top bar menu. You will need to write the two options, and they
+need to be different from one another.
+
+The Leader Board shows how every player is going. The players are sorted by the sum of how many questions were asked
+and how many questions were answered. Ask and answer many questions and be on the top!
+
+## API
 
 There are two types of objects stored in our database:
 
@@ -55,17 +63,17 @@ Your code will talk to the database via 4 methods:
 
 1) `_getUsers()` Method
 
-*Description*: Get all of the existing users from the database.  
+*Description*: Get all of the existing users from the database.
 *Return Value*: Object where the key is the user’s id and the value is the user object.
 
 2) `_getQuestions()` Method
 
-*Description*: Get all of the existing questions from the database.  
+*Description*: Get all of the existing questions from the database.
 *Return Value*: Object where the key is the question’s id and the value is the question object.
 
 3) `_saveQuestion(question)` Method
 
-*Description*: Save the polling question in the database.  
+*Description*: Save the polling question in the database.
 *Parameters*:  Object that includes the following properties: `author`, `optionOneText`, and `optionTwoText`. More details about these properties:
 
 | Attribute | Type | Description |
@@ -95,6 +103,9 @@ Your code will talk to the database via 4 methods:
 | qid | String | The id of the question that was answered|
 | answer | String | The option the user selected. The value should be either `"optionOne"` or `"optionTwo"`|
 
-## Contributing
-
-This repository is the starter code for *all* Udacity students. Therefore, we most likely will not accept pull requests. For details, check out [CONTRIBUTING.md](https://github.com/udacity/reactnd-project-would-you-rather-starter/blob/master/CONTRIBUTING.md).
+## Technologies used
+- [react](https://github.com/facebook/react/) - JavaScript library used for building web interfaces;
+- [redux](https://github.com/reduxjs/redux) - State container for JavaScript
+- [react-redux](https://github.com/reduxjs/react-redux) - Official React bindings for Redux
+- [create-react-app](https://github.com/facebook/create-react-app) - For creating the initial settings and project files;
+- [react-router](https://github.com/ReactTraining/react-router) - Used for handling links and which components should be rendered;
