@@ -14,6 +14,10 @@ need to be different from one another.
 The Leader Board shows how every player is going. The players are sorted by the sum of how many questions were asked
 and how many questions were answered. Ask and answer many questions and be on the top!
 
+# How to run the application
+- install all project dependencies with `npm install`
+- start the development server with `npm start`
+
 ## API
 
 There are two types of objects stored in our database:
