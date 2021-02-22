@@ -13,13 +13,19 @@ class Login extends Component {
 
   render() {
     return (
-      this.props.users
-        ? <ul>{
-            this.props.userIds.map((id) => (
-              <li key={id}><button onClick={(e) => this.handleLogin(e, id) }>{this.props.users[id].name}</button></li>)
-            )
-          }</ul>
-        : null
+      <div>
+        <h2>Log in</h2>
+
+        {
+          this.props.users
+            ? <ul>{
+                this.props.userIds.map((id) => (
+                  <li key={id}><button onClick={(e) => this.handleLogin(e, id) }>{this.props.users[id].name}</button></li>)
+                )
+              }</ul>
+            : null
+        }
+      </div>
     )
   }
 }

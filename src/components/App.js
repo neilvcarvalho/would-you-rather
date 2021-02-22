@@ -22,19 +22,18 @@ class App extends Component {
       <Router>
         <div className="App">
           <Navbar />
-          {
-            authedUser
-            ? (
-              <main class='container' style={{paddingTop: '5em'}}>
-                <Route path='/leaderboard' exact component={Leaderboard} />
-                <Route path='/questions/:id' component={QuestionPage} />
-                <Route path='/add' exact component={NewQuestion} />
-                <Route path='/' exact component={Home} />
-              </main>
-            )
-            : <Login />
-          }
-
+          <main class='container'>
+            {
+              authedUser
+              ? <div>
+                  <Route path='/leaderboard' exact component={Leaderboard} />
+                  <Route path='/questions/:id' component={QuestionPage} />
+                  <Route path='/add' exact component={NewQuestion} />
+                  <Route path='/' exact component={Home} />
+                </div>
+              : <Login />
+            }
+          </main>
         </div>
       </Router>
     )
