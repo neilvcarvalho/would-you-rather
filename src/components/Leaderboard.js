@@ -13,10 +13,12 @@ class Leaderboard extends Component {
 
         <table className='table'>
           <thead>
-            <th>#</th>
-            <th>User</th>
-            <th>Questions asked</th>
-            <th>Questions answered</th>
+            <tr>
+              <th>#</th>
+              <th>User</th>
+              <th>Questions asked</th>
+              <th>Questions answered</th>
+            </tr>
           </thead>
 
           <tbody>

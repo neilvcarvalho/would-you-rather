@@ -8,7 +8,7 @@ export default function QuestionResultCard (props) {
       <p>Would you rather {props.option.text}?</p>
       {optionVotes} out of {totalVotes} votes ({votingPercentage}%)
 
-      <div class="progress-bar" role="progressbar" style={{width: `${votingPercentage}%`}} aria-valuenow={votingPercentage} aria-valuemin="0" aria-valuemax="100">{votingPercentage}%</div>
+      <div className="progress-bar" role="progressbar" style={{width: `${votingPercentage}%`}} aria-valuenow={votingPercentage} aria-valuemin="0" aria-valuemax="100">{votingPercentage}%</div>
     </div>
   )
 }

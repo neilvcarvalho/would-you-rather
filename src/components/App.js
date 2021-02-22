@@ -22,7 +22,7 @@ class App extends Component {
       <Router>
         <div className="App">
           <Navbar />
-          <main class='container'>
+          <main className='container'>
             {
               authedUser
               ? <div>
