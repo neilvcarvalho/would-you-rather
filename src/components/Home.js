@@ -21,10 +21,10 @@ class Home extends Component {
       <div>
         <ul className="nav nav-pills">
           <li className="nav-item">
-            <a className={`nav-link ${this.state.currentTab === 'unanswered' ? 'active' : ''}`} href="#" onClick={() => { this.changeTab('unanswered') }}>Unanswered</a>
+            <button className={`nav-link btn btn-link ${this.state.currentTab === 'unanswered' ? 'active' : ''}`} onClick={() => { this.changeTab('unanswered') }}>Unanswered</button>
           </li>
           <li className="nav-item">
-          <a className={`nav-link ${this.state.currentTab === 'answered' ? 'active' : ''}`} href="#" onClick={() => { this.changeTab('answered') }}>Answered</a>
+            <button className={`nav-link btn btn-link ${this.state.currentTab === 'answered' ? 'active' : ''}`} onClick={() => { this.changeTab('answered') }}>Answered</button>
           </li>
         </ul>
 
